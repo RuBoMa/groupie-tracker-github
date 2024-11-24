@@ -1,5 +1,5 @@
 body {
-    background-color: #2121214c;
+    background-color: #2121217a;
 }
 h1 {
     text-align: center;
@@ -36,4 +36,17 @@ h1 {
 
 .card img {
     border-radius: 15px;
+}
+.nav-bar {
+    border-bottom: 6px solid white;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+.nav-bar li {
+    padding-left: 50px;
+    padding-right: 50px;
 }
