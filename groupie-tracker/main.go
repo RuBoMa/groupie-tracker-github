@@ -34,6 +34,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error fetching data: %v", err)
 	}
+	// Ensures the response body is closed after using it to avoid ressource leaks
 	defer response.Body.Close()
 
 	// Read data with io.ReadAll and convert []byte in to string
