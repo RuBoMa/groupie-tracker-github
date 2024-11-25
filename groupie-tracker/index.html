@@ -17,14 +17,25 @@
         {{range .}}
         <li class="card-container">
         <div class="card">
+            
             <img src="{{.Image}}" alt="{{.Name}}" style="width:100%">
             <div class="container">
                 <h4><b>{{.Name}}</b></h4>
                 <p>Members: {{range .Members}}{{.}}, {{end}}</p>
                 <p>Created in: {{.CreationDate}}</p>
                 <p>First Album: {{.FirstAlbum}}</p>
+                <details>
+                    <summary>Locationsℹ️</summary>
+                    Hello this is a test
+                    Hello this is a test
+                    Hello this is a test
+                    Hello this is a test
+                    Hello this is a test
+
+                </details>
             </div>
         </li>
+        
         {{end}}
     </ul>
 </body>

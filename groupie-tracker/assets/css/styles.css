@@ -52,3 +52,9 @@ h1 {
     padding-left: 50px;
     padding-right: 50px;
 }
+summary {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+}
