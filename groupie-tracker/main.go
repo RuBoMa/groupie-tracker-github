@@ -37,7 +37,7 @@ func main() {
 	// Ensures the response body is closed after using it to avoid ressource leaks
 	defer response.Body.Close()
 
-	// Read data with io.ReadAll and convert []byte in to string
+	// Read data with io.ReadAll
 	responseData, err := io.ReadAll(response.Body)
 	if err != nil {
 		log.Fatalf("Error reading response body: %v", err)
