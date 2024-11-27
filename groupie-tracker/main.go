@@ -22,47 +22,71 @@ type Band struct {
 	Relations    string   `json:"relations"`
 }
 
+type Location struct {
+	ID        int      `json:"id"`
+	Locations []string `json:"locations"`
+}
+
+type Date struct {
+	ID    int      `json:"id"`
+	Dates []string `json:"dates"`
+}
+
+type Relation struct {
+	ID        int                 `json:"id"`
+	Relations map[string][]string `json:"datesLocations"`
+}
+
 var tmpl = template.Must(template.ParseFiles("index.html"))
-var bands []Band
 
 func main() {
+	var artists []Band
+	var locations []Location
+	var dates []Date
+	var relations []Relation
+
+	err := fetchData("https://groupietrackers.herokuapp.com/api/artists", &artists)
+	if err != nil {
+		log.Fatalf("Error fetching artists: %v", err)
+	}
+	err = fetchData("https://groupietrackers.herokuapp.com/api/locations", &locations)
+	if err != nil {
+		log.Fatalf("Error fetching artists: %v", err)
+	}
+	err = fetchData("https://groupietrackers.herokuapp.com/api/dates", &dates)
+	if err != nil {
+		log.Fatalf("Error fetching artists: %v", err)
+	}
+	err = fetchData("https://groupietrackers.herokuapp.com/api/relation", &relations)
+	if err != nil {
+		log.Fatalf("Error fetching artists: %v", err)
+	}
+
+	for _, artist := range artists {
+		fmt.Printf("Artist: %s, Creation Date: %d\n", artist.Name, artist.CreationDate)
+	}
 	// Serving static files like CSS
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
-	// Map data in response
-	apiURL := "https://groupietrackers.herokuapp.com/api/artists"
-	response, err := http.Get(apiURL)
-	if err != nil {
-		log.Fatalf("Error fetching data: %v", err)
-	}
-	// Ensures the response body is closed after using it to avoid ressource leaks
-	defer response.Body.Close()
 
-	// Read data with io.ReadAll
-	responseData, err := io.ReadAll(response.Body)
-	if err != nil {
-		log.Fatalf("Error reading response body: %v", err)
-	}
-
-	// Parse JSON into bands slice
-	json.Unmarshal(responseData, &bands)
-	if err != nil {
-		log.Fatalf("Error parsing JSON: %v", err)
-	}
-
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		tmpl.ExecuteTemplate(w, "index.html", artists)
+	})
 
 	fmt.Println("Server started on http://localhost:8090")
 	http.ListenAndServe(":8090", nil)
 
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		w.WriteHeader(http.StatusMethodNotAllowed)
-	}
-
-	err := tmpl.ExecuteTemplate(w, "index.html", bands)
+func fetchData(url string, target interface{}) error {
+	response, err := http.Get(url)
 	if err != nil {
-		log.Printf("Error executing template: %v", err)
+		return err
 	}
+	defer response.Body.Close()
+
+	data, err := io.ReadAll(response.Body)
+	if err != nil {
+		return err
+	}
+	return json.Unmarshal(data, target)
 }
