@@ -26,12 +26,8 @@
                 <p>Created in: {{.CreationDate}}</p>
                 <p>First Album: {{.FirstAlbum}}</p>
                 <details>
-                    <summary>Locationsℹ️</summary>
-                    Hello this is a test
-                    Hello this is a test
-                    Hello this is a test
-                    Hello this is a test
-                    Hello this is a test
+                    <summary>Concerts:</summary>
+                    {{range .Location}}{{.}}<br> {{end}}
 
                 </details>
             </div>
