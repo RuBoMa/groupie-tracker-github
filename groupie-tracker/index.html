@@ -21,15 +21,21 @@
             
             <img src="{{.Image}}" alt="{{.Name}}" style="width:100%">
             <div class="container">
-                <h4><b>{{.Name}}</b></h4>
-                <p>Members: {{range .Members}}{{.}}, {{end}}</p>
-                <p>Created in: {{.CreationDate}}</p>
-                <p>First Album: {{.FirstAlbum}}</p>
-                <details>
-                    <summary>Concerts:</summary>
-                    {{range .Location}}{{.}}<br> {{end}}
+                <h2><b>{{.Name}}</b></h2>
 
+                <details>
+                    <summary>Members</summary>{{range .Members}}{{.}}<br> {{end}}
                 </details>
+                <details>
+                    <summary>Created in</summary>{{.CreationDate}}
+                </details>
+                <details>
+                    <summary>First Album</summary>{{.FirstAlbum}}
+                </details>
+                <details>
+                    <summary>Concerts</summary>{{range .Location}}{{.}}<br> {{end}}
+                </details>
+
             </div>
         </li>
         

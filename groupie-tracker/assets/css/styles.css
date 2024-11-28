@@ -26,7 +26,8 @@ h1 {
     background-color: white;
     border-radius: 15px;
     padding: 20px;
-    height: 550px;
+    min-height: 550px;
+    
 }
 
 .card:hover {
@@ -52,9 +53,27 @@ h1 {
     padding-left: 50px;
     padding-right: 50px;
 }
+
+details {
+    margin-bottom: 10px; 
+    border: 2px solid #007bff; 
+    border-radius: 8px;
+}
+
 summary {
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    list-style: none;
+    background-color: #007bff; 
+    color: white; 
+    padding: 10px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    outline: none; 
+}
+
+details[open] summary {
+    background-color: #0056b3; /* Darker blue when open */
+}
+
+summary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
