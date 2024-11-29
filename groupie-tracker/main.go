@@ -17,9 +17,10 @@ type Band struct {
 	Members      []string `json:"members"`
 	CreationDate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
+	Concerts     map[string][]string
 	Location     []string
 	Dates        []string
-	Relation     RelationsURL
+	Relation     map[string][]string
 }
 
 type LocationURL struct {
@@ -65,7 +66,7 @@ func main() {
 	log.Println("fething dates data")
 	err = fetchData("https://groupietrackers.herokuapp.com/api/dates", &dates)
 	if err != nil {
-		log.Fatalf("Error fetching artists: %v", err)
+		log.Fatalf("Error fetching artist s: %v", err)
 	}
 	log.Println("fething releations data")
 	err = fetchData("https://groupietrackers.herokuapp.com/api/relation", &relations)
@@ -79,6 +80,8 @@ func main() {
 
 	addLocation(artists, locationData)
 	addDates(artists, dates)
+	addRelations(artists, relations)
+	addConcerts(artists)
 
 	// Serving static files like CSS
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))

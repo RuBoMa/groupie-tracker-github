@@ -33,7 +33,17 @@
                     <summary>First Album</summary>{{.FirstAlbum}}
                 </details>
                 <details>
-                    <summary>Concerts</summary>{{range .Location}}{{.}}<br> {{end}}
+                    <summary>Concerts</summary> <ul>
+                        {{range $city, $dates := .Concerts}}
+                    {{$city}}
+                                <ul>
+                                    {{range $dates}}
+                                        <li>{{.}}</li>
+                                    {{end}}
+                                </ul>
+                            <br>
+                        {{end}}
+                    </ul>
                 </details>
 
             </div>
