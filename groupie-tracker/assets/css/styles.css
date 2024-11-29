@@ -60,6 +60,8 @@ details {
     margin-bottom: 10px; 
     border: 2px solid #007bff; 
     border-radius: 8px;
+    background-color: beige;
+    padding: 10px;
 }
 
 summary {
@@ -70,15 +72,18 @@ summary {
     font-weight: bold;
     cursor: pointer; 
     outline: none; 
+    border-radius: 8px;
     
 }
 
 details[open] summary {
     background-color: #0056b3; /* Darker blue when open */
+    /* border-radius: 8px; */
 }
 
 summary:hover {
     background-color: #0056b3; /* Darker blue on hover */
+    /* border-radius: 8px; */
 }
 
 ul {
