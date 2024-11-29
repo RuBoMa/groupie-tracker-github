@@ -30,11 +30,13 @@ h1 {
     
 }
 
+
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.913);
 }
 .container {
     padding: 16px;
+    margin-left: 5px;
 }
 
 .card img {
@@ -65,9 +67,10 @@ summary {
     color: white; 
     padding: 10px; 
     font-size: 16px; 
-    font-weight: bold; 
+    font-weight: bold;
     cursor: pointer; 
     outline: none; 
+    
 }
 
 details[open] summary {
@@ -76,4 +79,14 @@ details[open] summary {
 
 summary:hover {
     background-color: #0056b3; /* Darker blue on hover */
+}
+
+ul {
+    padding: 0px;
+    list-style-type: none;
+    margin-left: 5px;
+}
+
+#text {
+    margin-left: 5px;
 }
