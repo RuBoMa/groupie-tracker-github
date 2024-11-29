@@ -7,7 +7,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"strings"
 )
 
 // Band structure of the JSON data
@@ -19,7 +18,7 @@ type Band struct {
 	CreationDate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
 	Location     []string
-	Dates        DatesURL
+	Dates        []string
 	Relation     RelationsURL
 }
 
@@ -79,6 +78,7 @@ func main() {
 	// }
 
 	addLocation(artists, locationData)
+	addDates(artists, dates)
 
 	// Serving static files like CSS
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
@@ -87,45 +87,9 @@ func main() {
 		tmpl.Execute(w, artists)
 	})
 
-	fmt.Println("Server started on http://localhost:80")
-	log.Fatal(http.ListenAndServe(":80", nil))
+	fmt.Println("Server started on http://localhost:8090")
+	log.Fatal(http.ListenAndServe(":8090", nil))
 
-}
-
-// Reading locations from LocationURL and adding to Band struct by matching IDs
-func addLocation(artists []Band, locationData LocationURL) {
-
-	cleanLocation := func(s []string) []string {
-		var location []string
-
-		for _, word := range s {
-			modWord := ""
-			for i, char := range word {
-				if char == '_' {
-					modWord += " "
-				} else if char == '-' {
-					modWord += " - "
-				} else if i == 0 || word[i-1] == '_' || word[i-1] == '-' {
-					modWord += strings.ToUpper(string(char))
-				} else {
-					modWord += string(char)
-				}
-			}
-			location = append(location, modWord)
-		}
-		return location
-	}
-
-	for i := range artists {
-		// Find the corresponding location data for the artist based on ID
-		for _, loc := range locationData.Index {
-			if loc.ID == artists[i].ID {
-				cleanLocation := cleanLocation(loc.Locations)
-				artists[i].Location = cleanLocation
-				break
-			}
-		}
-	}
 }
 
 func fetchData(url string, target interface{}) error {
@@ -143,5 +107,4 @@ func fetchData(url string, target interface{}) error {
 	return json.Unmarshal(data, target)
 }
 
-
-// possible changes: Reading locations into a 
+// possible changes: Reading locations into a
