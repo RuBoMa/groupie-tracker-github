@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <h1>Groupie Tracker</h1>
+    
+    <!-- placeholdes for navbar -->
+    <ul class="nav-bar">
+        <li>Home</li>
+        <li>About Us</li>
+        <li>Locations</li>
+    </ul>
+    <form action="/search" method="POST" class="search-form">
+        <textarea name="search" rows="3" cols="30" placeholder="Enter your text here">{{.Input}}</textarea>
+        <button type="submit">Search</button>
+    </form>
+        
+    <ul class="grid">
+        {{range .Matches}}
+        <li class="card-container">
+        <div class="card">
+            
+            <img src="{{.Image}}" alt="{{.Name}}" style="width:100%">
+            
+            <div class="container">
+                <h2><b><a href={{.Name}}><br><br>{{.Name}}<br><br></a></b></h2>
+
+                <details>
+                    <summary>Members</summary>
+                    {{range .Members}}
+                    {{.}}<br>
+                    {{end}}
+            </details>
+                <details>
+                    <summary>Created in</summary><p class="items">{{.CreationDate}}</p>
+                </details>
+                <details>
+                    <summary>First Album</summary><p class="items">{{.FirstAlbum}}</p>
+                </details>
+                <details>
+                    <summary>Concerts</summary> <ul>
+                        {{range $city, $dates := .Concerts}}
+                    {{$city}}
+                                <ul>
+                                    {{range $dates}}
+                                        <li>{{.}}</li>
+                                    {{end}}
+                                </ul>
+                            <br>
+                        {{end}}
+                    </ul>
+                </details>
+
+            </div>
+        </li>
+        
+        {{end}}
+    </ul>
+</body>
+</html>

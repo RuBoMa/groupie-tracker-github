@@ -1,11 +1,19 @@
 body {
-    background-color: #2121217a;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-
 }
+
+section.background {
+    background-image: url("/assets/concertv1.1.jpg"), linear-gradient(to bottom, #18091a,#09090f);
+    background-size: contain;
+    background-position: top; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    min-height: 550px;
+    min-height: 550px;
+}
+
 h1 {
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .grid {
@@ -71,6 +79,47 @@ summary {
     cursor: pointer; 
     outline: none; 
     
+}
+
+.items li {
+    margin: 10px; /* Space between each member */
+}
+
+
+.items {
+    margin: 10px 0; /* Vertical spacing between items */
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column; /* Stacks the textarea and button vertically */
+    align-items: center; /* Centers the form elements horizontally */
+    margin-top: 20px;
+}
+
+textarea {
+    display: block;
+    margin-bottom: 20px; /* Adds space between textarea and button */
+    text-align: center;
+    font-weight: 300;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 400px;
+    width: 1000px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
 
 details[open] summary {
