@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
+    <section class="background">
     <h1>Groupie Tracker</h1>
     
     <!-- placeholdes for navbar -->
     <ul class="nav-bar">
-        <li>Home</li>
-        <li>About Us</li>
-        <li>Locations</li>
+        <li><a href="/">Home</a></li>
+        <li><a href="About">About Us</a></li>
+        <li><a href="Locations">Locations</a></li>
     </ul>
-    <form action="/search" method="POST" class="search-form">
+    <form action="/Search" method="POST" class="search-form">
         <textarea name="search" rows="3" cols="30" placeholder="Enter your text here">{{.Input}}</textarea>
         <button type="submit">Search</button>
     </form>
@@ -61,5 +62,6 @@
         
         {{end}}
     </ul>
+</section>
 </body>
 </html>

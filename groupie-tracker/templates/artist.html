@@ -11,10 +11,15 @@
     
     <!-- Placeholder for navbar -->
     <ul class="nav-bar">
-        <li>Home</li>
-        <li>About Us</li>
-        <li>Locations</li>
+        <li><a href="/">Home</a></li>
+        <li><a href="About">About Us</a></li>
+        <li><a href="Locations">Locations</a></li>
     </ul>
+
+    <form action="/Search" method="POST" class="search-form">
+        <textarea name="search" rows="3" cols="30" placeholder="Enter your text here">{{.Input}}</textarea>
+        <button type="submit">Search</button>
+    </form>
     
     <!-- Image section -->
     <img src="{{.Image}}" alt="{{.Name}}" style="width:30%">

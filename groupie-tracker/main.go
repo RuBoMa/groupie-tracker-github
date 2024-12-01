@@ -52,7 +52,7 @@ func main() {
 	// Serving static files like CSS
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 	log.Println("rendering BandPage")
-	utils.HomePage(artists, data)
+	utils.PageHandler(artists, data)
 	fmt.Println("Server started on http://localhost:8090")
 	log.Fatal(http.ListenAndServe(":8090", nil))
 

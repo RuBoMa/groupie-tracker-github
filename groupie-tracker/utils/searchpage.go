@@ -27,13 +27,24 @@ func SearchPage(artists []Band, data PageData, w http.ResponseWriter, r *http.Re
 			}
 		}
 		data.Matches = matches
-		searchtmpl, err := template.ParseFiles("templates/search.html")
-		if err != nil {
-			ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
-		}
-		err = searchtmpl.Execute(w, data)
-		if err != nil {
-			ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
+		if len(data.Matches) > 0 {
+			searchtmpl, err := template.ParseFiles("templates/search.html")
+			if err != nil {
+				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
+			}
+			err = searchtmpl.Execute(w, data)
+			if err != nil {
+				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
+			}
+		} else {
+			unsuccessfulsearchtmpl, err := template.ParseFiles("templates/unsuccessfulsearch.html")
+			if err != nil {
+				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
+			}
+			err = unsuccessfulsearchtmpl.Execute(w, data)
+			if err != nil {
+				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
+			}
 		}
 	}
 

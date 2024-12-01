@@ -13,7 +13,8 @@ section.background {
 
 h1 {
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: rgb(240, 187, 227);
+    text-decoration: underline;
 }
 
 .grid {
@@ -31,7 +32,7 @@ h1 {
 .card {
     box-shadow: 0 20px 8px 0 rgba(0, 0, 0, 0.596);
     transition: 0.3s;
-    background-color: white;
+    background-color: rgb(240, 187, 227);
     border-radius: 15px;
     padding: 20px;
     min-height: 550px;
@@ -40,7 +41,7 @@ h1 {
 
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.913);
+    box-shadow: 0 8px 16px 0 rgba(240, 187, 227, 0.836);
 }
 .container {
     padding: 16px;
@@ -51,7 +52,7 @@ h1 {
     border-radius: 15px;
 }
 .nav-bar {
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid rgb(240, 187, 227);
     width: 60%;
     margin: auto;
     text-align: center;
@@ -66,13 +67,13 @@ h1 {
 
 details {
     margin-bottom: 10px; 
-    border: 2px solid #007bff; 
+    border: 2px solid rgb(68, 32, 59); 
     border-radius: 8px;
 }
 
 summary {
-    background-color: #007bff; 
-    color: white; 
+    background-color: rgb(68, 32, 59); 
+    color: rgb(240, 187, 227); 
     padding: 10px; 
     font-size: 16px; 
     font-weight: bold;
@@ -110,7 +111,7 @@ textarea {
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: rgb(68, 32, 59);
     color: white;
     border: none;
     border-radius: 5px;
@@ -119,15 +120,15 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: rgb(124, 66, 110);
 }
 
 details[open] summary {
-    background-color: #0056b3; /* Darker blue when open */
+    background-color: rgb(124, 66, 110); /* Darker blue when open */
 }
 
 summary:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: rgb(124, 66, 110); /* Darker blue on hover */
 }
 
 ul {
