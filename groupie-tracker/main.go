@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-var tmpl = template.Must(template.ParseGlob("*.html"))
+var tmpl = template.Must(template.ParseGlob("templates/*.html"))
 
 func main() {
 
@@ -45,6 +45,7 @@ func main() {
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 
 	http.HandleFunc("/", home)
+	http.HandleFunc("/about", about)
 
 	fmt.Println("Server started on http://localhost:8090")
 	log.Fatal(http.ListenAndServe(":8090", nil))
@@ -52,7 +53,17 @@ func main() {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
+
 	err := tmpl.ExecuteTemplate(w, "index.html", artists)
+	if err != nil {
+		log.Println("Error executing index.html: ", err)
+		http.Error(w, "Internal Server Error, please try again later.", http.StatusInternalServerError)
+		return
+	}
+}
+
+func about(w http.ResponseWriter, r *http.Request) {
+	err := tmpl.ExecuteTemplate(w, "index.html", nil)
 	if err != nil {
 		log.Println("Error executing index.html: ", err)
 		http.Error(w, "Internal Server Error, please try again later.", http.StatusInternalServerError)
