@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Name}}</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>{{.Name}}</h1>
-    
-    <!-- Placeholder for navbar -->
-    <ul class="nav-bar">
+    <section class="background">
+        <ul class="nav-bar">
         <li><a href="/">Home</a></li>
         <li><a href="About">About Us</a></li>
         <li><a href="Locations">Locations</a></li>
     </ul>
+    <h1>{{.Name}}</h1>
+    
+    <!-- Placeholder for navbar -->
+    
 
     <form action="/Search" method="POST" class="search-form">
-        <textarea name="search" rows="3" cols="30" placeholder="Enter your text here">{{.Input}}</textarea>
+        <textarea name="search" rows="1" cols="30" placeholder="Search here">{{.Input}}</textarea>
         <button type="submit">Search</button>
     </form>
     
@@ -58,5 +63,6 @@
             {{end}}
         </ul>
     </details>
+</section>
 </body>
 </html>
