@@ -5,8 +5,8 @@ import (
 )
 
 // Adding data to Concerts by looping locations (chronological) and matching the relations
-// Concerts in chronologial order
-func addConcerts(artists []Band) {
+// Capitalized concert data
+func addConcerts() {
 
 	for i := range artists {
 		concertDates := make(map[string][]string)
@@ -24,7 +24,7 @@ func addConcerts(artists []Band) {
 
 // Reading relations from RelationsURL and adding to Band struct by matching IDs
 // Concerts in alphabetical order after the town name
-func addRelations(artists []Band, relations RelationsURL) {
+func addRelations() {
 
 	for i := range artists {
 		// Find the corresponding location data for the artist based on ID
@@ -40,7 +40,7 @@ func addRelations(artists []Band, relations RelationsURL) {
 
 // Reading locations from LocationURL and adding to Band struct by matching IDs
 // Locations in chronologial order
-func addLocation(artists []Band, locationData LocationURL) {
+func addLocation() {
 
 	for i := range artists {
 		// Find the corresponding location data for the artist based on ID
@@ -57,7 +57,7 @@ func addLocation(artists []Band, locationData LocationURL) {
 
 // Reading dates from DatesURL and adding to Band struct by matching IDs
 // Dates in chronologial order
-func addDates(artists []Band, datesData DatesURL) {
+func addDates() {
 
 	for i := range artists {
 		// Find the corresponding location data for the artist based on ID
@@ -72,20 +72,27 @@ func addDates(artists []Band, datesData DatesURL) {
 }
 
 func cleanLocation(s string) string {
-	var location string
+	location := strings.Split(s, "-")
 
-	for i, char := range s {
-		if char == '_' {
-			location += " "
-		} else if char == '-' {
-			location += ", "
-		} else if i == 0 || s[i-1] == '_' || s[i-1] == '-' {
-			location += strings.ToUpper(string(char))
+	for i := 0; i < len(location); i++ {
+		word := location[i]
+		if word == "usa" {
+			location[i] = strings.ToUpper(word)
 		} else {
-			location += string(char)
+			newLoc := ""
+			for j, char := range word {
+				if char == '_' {
+					newLoc += " "
+				} else if j == 0 || word[j-1] == '_' {
+					newLoc += strings.ToUpper(string(char))
+				} else {
+					newLoc += string(char)
+				}
+			}
+			location[i] = newLoc
 		}
 	}
-	return location
+	return strings.Join(location, ", ")
 }
 
 func cleanDates(s []string) []string {
