@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-var tmpl = template.Must(template.ParseFiles("index.html"))
+var tmpl = template.Must(template.ParseGlob("*.html"))
 
 func main() {
 
