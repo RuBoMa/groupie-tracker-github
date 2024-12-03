@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,60 +10,64 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <section class="background">
         <ul class="nav-bar">
-        <li><a href="/">Home</a></li>
-        <li><a href="About">About Us</a></li>
-        <li><a href="Locations">Locations</a></li>
-    </ul>
-    <h1>{{.Name}}</h1>
-    
-    <!-- Placeholder for navbar -->
-    
-
-    <form action="/Search" method="POST" class="search-form">
-        <textarea name="search" rows="1" cols="30" placeholder="Search here">{{.Input}}</textarea>
-        <button type="submit">Search</button>
-    </form>
-    
-    <!-- Image section -->
-    <img src="{{.Image}}" alt="{{.Name}}" style="width:30%">
-    
-    <!-- Band information -->
-    <h2><b>{{.Name}}</b></h2>
-
-    <details>
-        <summary>Members</summary>
-        {{range .Members}}
-        {{.}}<br>
-        {{end}}
-    </details>
-    
-    <details>
-        <summary>Created in</summary>
-        {{.CreationDate}}
-    </details>
-    
-    <details>
-        <summary>First Album</summary>
-        {{.FirstAlbum}}
-    </details>
-    
-    <details>
-        <summary>Concerts</summary>
-        <ul>
-            {{range $city, $dates := .Concerts}}
-            <li>{{$city}}
-                <ul>
-                    {{range $dates}}
-                    <li>{{.}}</li>
-                    {{end}}
-                </ul>
-            </li>
-            {{end}}
+            <li><a href="/">Home</a></li>
+            <li><a href="About">About Us</a></li>
+            <li><a href="Locations">Locations</a></li>
         </ul>
-    </details>
-</section>
+        <h1>{{.Name}}</h1>
+
+        <!-- Placeholder for navbar -->
+
+
+        <form action="/Search" method="POST" class="search-form">
+            <textarea name="search" rows="1" cols="30" placeholder="Search here">{{.Input}}</textarea>
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Image section -->
+        <img src="{{.Image}}" alt="{{.Name}}" style="width:30%">
+
+        <!-- Band information -->
+        <h2><b>{{.Name}}</b></h2>
+
+        <details>
+            <summary>Members</summary>
+
+            {{range .Members}}
+            {{.}}<br>
+            {{end}}
+        </details>
+
+        <details>
+            <summary>Created in</summary>
+            {{.CreationDate}}
+        </details>
+
+        <details>
+            <summary>First Album</summary>
+            {{.FirstAlbum}}
+        </details>
+
+        <details>
+            <summary>Concerts</summary>
+            <ul>
+                {{range $city, $dates := .Concerts}}
+                <li>{{$city}}
+                    <ul>
+                        {{range $dates}}
+                        <li>{{.}}</li>
+                        {{end}}
+                    </ul>
+                </li>
+                {{end}}
+            </ul>
+        </details>
+    </section>
+    
 </body>
+
 </html>

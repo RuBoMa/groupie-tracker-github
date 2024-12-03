@@ -13,7 +13,10 @@ func BandPage(artists []Band, data PageData, w http.ResponseWriter, r *http.Requ
 	for _, artist := range artists {
 		//	Case insensitive word matching
 		if strings.EqualFold(artist.Name, r.URL.Path[1:]) {
-			tmplArtist.Execute(w, artist)
+			err := tmplArtist.Execute(w, artist)
+			if err != nil {
+				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
+			}
 			artistExists = true
 		}
 	}
@@ -21,3 +24,4 @@ func BandPage(artists []Band, data PageData, w http.ResponseWriter, r *http.Requ
 		ErrorPage(w, "Page not found", http.StatusNotFound)
 	}
 }
+
