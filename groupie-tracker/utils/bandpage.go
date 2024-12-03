@@ -24,4 +24,3 @@ func BandPage(artists []Band, data PageData, w http.ResponseWriter, r *http.Requ
 		ErrorPage(w, "Page not found", http.StatusNotFound)
 	}
 }
-

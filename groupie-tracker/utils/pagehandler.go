@@ -11,7 +11,6 @@ func PageHandler(artists []Band, data PageData) {
 		switch r.URL.Path {
 
 		case "/":
-
 			if r.Method != http.MethodGet {
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return
@@ -27,7 +26,6 @@ func PageHandler(artists []Band, data PageData) {
 			}
 
 		case "/About":
-
 			if r.Method != http.MethodGet {
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return
@@ -35,7 +33,7 @@ func PageHandler(artists []Band, data PageData) {
 			AboutPage(w)
 
 		default:
-
+			//	Change to method post when changing request/response stuff
 			if r.Method != http.MethodGet {
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return
