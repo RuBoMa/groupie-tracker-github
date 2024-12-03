@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,41 +11,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
 </head>
 <script>
-    window.onload = function() {
+    window.onload = function () {
         window.scrollTo(0, 0);
     };
 </script>
+
 <body>
     <section class="background">
         <section class="background-image">
-    <ul class="nav-bar">
-        <li><a href="/">Home</a></li>
-        <li><a href="About">About Us</a></li>
-        <li><a href="Locations">Locations</a></li>
-    </ul>
-    <h1>Groupie Tracker</h1>
-    
-    <!-- placeholdes for navbar -->
-    
-    <form action="/Search" method="POST" class="search-form">
-        <textarea name="search" rows="1" cols="30" placeholder="Search here">{{.Input}}</textarea>
-        <button type="submit">Search</button>
-    </form>
+            <ul class="nav-bar">
+                <li><a href="/">Home</a></li>
+                <li><a href="About">About Us</a></li>
+                <li><a href="Locations">Locations</a></li>
+            </ul>
+            <h1>Groupie Tracker</h1>
+
+            <!-- placeholdes for navbar -->
+
+            <form action="/Search" method="POST" class="search-form">
+                <textarea name="search" rows="1" cols="30" placeholder="Search here">{{.Input}}</textarea>
+                <button type="submit">Search</button>
+            </form>
         </section>
-    <ul class="grid">
-        {{range .Matches}}
-        <li class="card-container">
-        <div class="card">
-            <a href={{.Name}}>
-            <img src="{{.Image}}" alt="{{.Name}}" style="width:100%">
-            
-            <div class="container">
-                <h2><b></a></b></h2>
-            </div>
-        </li>
-        
-        {{end}}
-    </ul>
-</section>
+        <ul class="grid">
+            {{range .Matches}}
+            <li class="card-container">
+                <div class="card">
+                    <a href="/{{.Name}}">
+                        <img src="{{.Image}}" alt="{{.Name}}" style="width:100%">
+
+                        <div class="container">
+                            <h2><b>{{.Name}}</b></h2>
+                        </div>
+                    </a>
+                </div>
+            </li>
+
+            {{end}}
+        </ul>
+    </section>
 </body>
+
 </html>

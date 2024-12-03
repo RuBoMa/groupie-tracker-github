@@ -1,6 +1,9 @@
-html, body {
-    margin: 0; /* Remove default margins */
-    padding: 0; /* Remove default padding */
+html,
+body {
+    margin: 0;
+    /* Remove default margins */
+    padding: 0;
+    /* Remove default padding */
     height: 100%;
     font-family: 'Courier New', Courier, monospace;
     min-height: 100%;
@@ -14,10 +17,12 @@ html, body {
 
 
 section.background {
-    background-image: linear-gradient(to bottom, #18091a,#09090f);
+    background-image: linear-gradient(to bottom, #18091a, #09090f);
     background-size: contain;
-    background-position: top; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: top;
+    /* Centers the image */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
     min-height: 100%;
     position: relative;
 }
@@ -25,8 +30,10 @@ section.background {
 section.background-image {
     background-image: url("/assets/concertv1.1.jpg");
     background-size: contain;
-    background-position: top; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: top;
+    /* Centers the image */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
     min-height: 100%;
     border: 10%;
     position: relative;
@@ -60,7 +67,7 @@ h1 {
     background-color: rgb(161, 255, 224);
     border-radius: 15px;
     padding: 20px;
-    max-height: 70%;
+    min-height: 70%;
 }
 
 /* @keyframes moveCard {
@@ -80,6 +87,7 @@ h1 {
 .container {
     padding: 16px;
     margin-left: 5px;
+
 }
 
 .card img {
@@ -104,6 +112,7 @@ h1 {
     0% {
         clip-path: inset(0 50% 0 50%);
     }
+
     100% {
         clip-path: inset(0 0 0 0);
     }
@@ -127,41 +136,46 @@ h1 {
 }
 
 details {
-    margin-bottom: 10px; 
-    border: 2px solid rgb(68, 32, 59); 
+    margin-bottom: 10px;
+    border: 2px solid rgb(68, 32, 59);
     border-radius: 8px;
 }
 
 summary {
-    background-color: rgb(68, 32, 59); 
-    color: rgb(161, 255, 224); 
-    padding: 10px; 
-    font-size: 16px; 
+    background-color: rgb(68, 32, 59);
+    color: rgb(161, 255, 224);
+    padding: 10px;
+    font-size: 16px;
     font-weight: bold;
-    cursor: pointer; 
-    outline: none; 
-    
+    cursor: pointer;
+    outline: none;
+
 }
 
 .items li {
-    margin: 10px; /* Space between each member */
+    margin: 10px;
+    /* Space between each member */
 }
 
 
 .items {
-    margin: 10px 0; /* Vertical spacing between items */
+    margin: 10px 0;
+    /* Vertical spacing between items */
 }
 
 .search-form {
     display: flex;
-    flex-direction: column; /* Stacks the textarea and button vertically */
-    align-items: center; /* Centers the form elements horizontally */
+    flex-direction: column;
+    /* Stacks the textarea and button vertically */
+    align-items: center;
+    /* Centers the form elements horizontally */
     margin-top: 20px;
     font-family: "Yuji Mai", serif;
 }
 
 textarea {
-    margin-bottom: 20px; /* Adds space between textarea and button */
+    margin-bottom: 20px;
+    /* Adds space between textarea and button */
     text-align: center;
     font-weight: 400;
     font-family: "Yuji Mai", serif;
@@ -194,11 +208,13 @@ button:hover {
 }
 
 details[open] summary {
-    background-color: rgb(124, 66, 110); /* Darker blue when open */
+    background-color: rgb(124, 66, 110);
+    /* Darker blue when open */
 }
 
 summary:hover {
-    background-color: rgb(124, 66, 110); /* Darker blue on hover */
+    background-color: rgb(124, 66, 110);
+    /* Darker blue on hover */
 }
 
 ul {
