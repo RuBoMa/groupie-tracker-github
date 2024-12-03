@@ -22,16 +22,11 @@
             <ul class="nav-bar">
                 <li><a href="/">Home</a></li>
                 <li><a href="About">About Us</a></li>
-                <li><a href="Locations">Locations</a></li>
             </ul>
             <h1>Groupie Tracker</h1>
 
             <!-- placeholdes for navbar -->
 
-            <form action="/Search" method="POST" class="search-form">
-                <textarea name="search" rows="1" cols="30" placeholder="Search here">{{.Input}}</textarea>
-                <button type="submit">Search</button>
-            </form>
         </section>
         <ul class="grid">
             {{range .Matches}}

@@ -26,14 +26,6 @@ func PageHandler(artists []Band, data PageData) {
 				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
 			}
 
-		case "/Locations":
-
-			if r.Method != http.MethodGet {
-				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
-				return
-			}
-			LocationsPage(w)
-
 		case "/About":
 
 			if r.Method != http.MethodGet {
@@ -41,14 +33,6 @@ func PageHandler(artists []Band, data PageData) {
 				return
 			}
 			AboutPage(w)
-
-		case "/Search":
-
-			if r.Method != http.MethodPost {
-				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
-				return
-			}
-			SearchPage(artists, data, w, r)
 
 		default:
 
