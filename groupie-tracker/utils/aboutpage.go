@@ -1,14 +1,13 @@
 package utils
 
 import (
+	"log"
 	"net/http"
-	"text/template"
 )
 
-var tmplAbout = template.Must(template.ParseFiles("templates/about.html"))
-
 func AboutPage(w http.ResponseWriter) {
-	if err := tmplAbout.Execute(w, nil); err != nil {
+	if err := tmpl.ExecuteTemplate(w, "about.html", nil); err != nil {
+		log.Println("Error executing about.html: ", err)
 		ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
 	}
 }

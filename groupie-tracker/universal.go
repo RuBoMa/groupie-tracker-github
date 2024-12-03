@@ -1,13 +1,4 @@
-package utils
-
-import "text/template"
-
-type PageData struct {
-	Input        string
-	Matches      []Band
-	ErrorMessage string
-	ErrorStatus  string
-}
+package main
 
 // Band structure of the JSON data
 type Band struct {
@@ -45,4 +36,7 @@ type RelationsURL struct {
 	} `json:"index"`
 }
 
-var tmpl = template.Must(template.ParseGlob("templates/*.html"))
+var artists []Band
+var locationData LocationURL
+var datesData DatesURL
+var relations RelationsURL

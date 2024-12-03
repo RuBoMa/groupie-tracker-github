@@ -34,7 +34,7 @@ section.background-image {
     /* Centers the image */
     background-repeat: no-repeat;
     /* Prevents the image from repeating */
-    min-height: 100%;
+    min-height: 50%;
     border: 10%;
     position: relative;
 }
