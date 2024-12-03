@@ -1,11 +1,53 @@
+html,
 body {
-    background-color: #2121217a;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-
+    margin: 0;
+    /* Remove default margins */
+    padding: 0;
+    /* Remove default padding */
+    height: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 100%;
 }
+
+.yuji-mai-regular {
+    font-family: "Yuji Mai", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+section.background {
+    /* background-color: black; */
+    /* background-image: linear-gradient(to bottom, #38143d, #09090f); */
+    background-size: contain;
+    background-position: top;
+    /* Centers the image */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
+    min-height: 100%;
+    position: relative;
+}
+
+section.background-image {
+    background-image: url("/assets/concertv1.1.jpg");
+    background-size: contain;
+    background-position: top;
+    /* Centers the image */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
+    min-height: 100%;
+    border: 10%;
+    position: relative;
+}
+
+
 h1 {
+    padding: 50px;
     text-align: center;
-    color: white;
+    color: rgb(161, 255, 224);
+    font-size: 300%;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 6px rgb(161, 255, 224);
 }
 
 .grid {
@@ -21,69 +63,161 @@ h1 {
 
 
 .card {
-    box-shadow: 0 20px 8px 0 rgba(0, 0, 0, 0.596);
+    box-shadow: 0 0px 6px 0 rgba(161, 255, 224, 0.336);
     transition: 0.3s;
-    background-color: white;
+    background-color: rgb(161, 255, 224);
     border-radius: 15px;
     padding: 20px;
-    min-height: 550px;
-    
+    min-height: 70%;
 }
+
+/* @keyframes moveCard {
+    0% {
+        transform: translateX(-150px); 
+    }
+    100% {
+        transform: translateX(100vw); 
+    }
+} */
 
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.913);
+    box-shadow: 0 0px 16px 0 rgb(161, 255, 224);
 }
+
 .container {
     padding: 16px;
     margin-left: 5px;
+
 }
 
 .card img {
     border-radius: 15px;
 }
+
 .nav-bar {
-    border-bottom: 3px solid white;
-    width: 60%;
+    background-color: rgba(116, 29, 96, 0.699);
+    border-bottom: 3px solid rgb(161, 255, 224);
+    padding-top: 25px;
+    width: 100%;
     margin: auto;
     text-align: center;
     list-style-type: none;
     display: flex;
     justify-content: center;
+    animation: expand 1.5s ease;
+    position: relative;
 }
-.nav-bar li {
+
+@keyframes expand {
+    0% {
+        clip-path: inset(0 50% 0 50%);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.nav-bar li a {
+    color: rgb(161, 255, 224);
+    text-decoration: none;
     padding-left: 50px;
     padding-right: 50px;
+    font-size: 2vh;
+    text-shadow: 0 0 5px rgb(22, 8, 19);
+    transition: text-shadow 0.2s ease;
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.nav-bar li a:hover {
+    text-shadow: 0 0 4px rgb(105, 201, 169);
 }
 
 details {
-    margin-bottom: 10px; 
-    border: 2px solid #007bff; 
+    margin-bottom: 10px;
+    border: 2px solid rgb(68, 32, 59);
     border-radius: 8px;
     background-color: beige;
     padding: 10px;
 }
 
 summary {
-    background-color: #007bff; 
-    color: white; 
-    padding: 10px; 
-    font-size: 16px; 
+    background-color: rgb(68, 32, 59);
+    color: rgb(161, 255, 224);
+    padding: 10px;
+    font-size: 16px;
     font-weight: bold;
-    cursor: pointer; 
-    outline: none; 
-    border-radius: 8px;
-    
+    cursor: pointer;
+    outline: none;
+
+}
+
+.items li {
+    margin: 10px;
+    /* Space between each member */
+}
+
+
+.items {
+    margin: 10px 0;
+    /* Vertical spacing between items */
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    /* Stacks the textarea and button vertically */
+    align-items: center;
+    /* Centers the form elements horizontally */
+    margin-top: 20px;
+    font-family: "Yuji Mai", serif;
+}
+
+textarea {
+    margin-bottom: 20px;
+    /* Adds space between textarea and button */
+    text-align: center;
+    font-weight: 400;
+    font-family: "Yuji Mai", serif;
+    height: 10vh;
+    width: 80vh;
+    font-size: 5rem;
+    padding: 10vh;
+    background-color: rgba(170, 255, 227, 0.89);
+    color: #18091a;
+    box-shadow: 0 0 20px rgb(170, 255, 227);
+    border-width: 0;
+    vertical-align: middle;
+    resize: none;
+    border-radius: 30px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: rgb(161, 255, 224);
+    color: #18091a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(105, 201, 169);
 }
 
 details[open] summary {
-    background-color: #0056b3; /* Darker blue when open */
-    /* border-radius: 8px; */
+    background-color: rgb(124, 66, 110);
+    /* Darker blue when open */
 }
 
 summary:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    /* border-radius: 8px; */
+    background-color: rgb(124, 66, 110);
+    /* Darker blue on hover */
 }
 
 ul {

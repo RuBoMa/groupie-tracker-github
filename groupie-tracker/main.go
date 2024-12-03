@@ -3,15 +3,17 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"html/template"
+	"grp/utils"
 	"io"
 	"log"
 	"net/http"
 )
 
-var tmpl = template.Must(template.ParseGlob("templates/*.html"))
-
 func main() {
+	var artists []utils.Band
+	var locationData utils.LocationURL
+	var dates utils.DatesURL
+	var relations utils.RelationsURL
 
 	log.Println("fetching data")
 	err := fetchData("https://groupietrackers.herokuapp.com/api/artists", &artists)
@@ -35,40 +37,22 @@ func main() {
 	// 	fmt.Printf("Artist: %s, Creation Date: %d\n", artist.Name, artist.CreationDate)
 	// }
 
-	log.Println("adding data to the artist")
-	addLocation()
-	addDates()
-	addRelations()
-	addConcerts()
+	utils.AddLocation(artists, locationData)
+	utils.AddDates(artists, dates)
+	utils.AddRelations(artists, relations)
+	utils.AddConcerts(artists)
+
+	data := utils.PageData{
+		Matches: artists,
+	}
 
 	// Serving static files like CSS
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
-
-	http.HandleFunc("/", home)
-	http.HandleFunc("/about", about)
-
+	log.Println("rendering BandPage")
+	utils.PageHandler(artists, data)
 	fmt.Println("Server started on http://localhost:8090")
 	log.Fatal(http.ListenAndServe(":8090", nil))
 
-}
-
-func home(w http.ResponseWriter, r *http.Request) {
-
-	err := tmpl.ExecuteTemplate(w, "index.html", artists)
-	if err != nil {
-		log.Println("Error executing index.html: ", err)
-		http.Error(w, "Internal Server Error, please try again later.", http.StatusInternalServerError)
-		return
-	}
-}
-
-func about(w http.ResponseWriter, r *http.Request) {
-	err := tmpl.ExecuteTemplate(w, "index.html", nil)
-	if err != nil {
-		log.Println("Error executing index.html: ", err)
-		http.Error(w, "Internal Server Error, please try again later.", http.StatusInternalServerError)
-		return
-	}
 }
 
 func fetchData(url string, target interface{}) error {
