@@ -32,7 +32,7 @@ func PageHandler(artists []Band, data PageData) {
 
 		default:
 
-			if r.Method != http.MethodGet {
+			if r.Method != http.MethodPost {
 				log.Println("Wrong user method requesting band pages")
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return

@@ -8,9 +8,16 @@ import (
 
 func BandPage(artists []Band, data PageData, w http.ResponseWriter, r *http.Request) {
 	artistExists := false
+	name := r.FormValue("bandName")
+
+	if name != r.URL.Path[1:] {
+		log.Println("Error: Post not matching URL")
+		ErrorPage(w, "Bad Request", http.StatusBadRequest)
+		return
+	}
 	for _, artist := range artists {
 		//	Case insensitive word matching
-		if strings.EqualFold(artist.Name, r.URL.Path[1:]) {
+		if strings.EqualFold(artist.Name, name) {
 			err := tmpl.ExecuteTemplate(w, "artist.html", artist)
 			if err != nil {
 				log.Println("Error executing artist.html: ", err)
