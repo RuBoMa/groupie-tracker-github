@@ -4,19 +4,15 @@ import (
 	"strings"
 )
 
-// Adding data to Concerts by looping locations (chronological) and matching the relations
-// Concerts in chronologial order
+// Adding data to Concerts by looping the relations
+// Concerts include same data as relations but the places are capitalized
 func AddConcerts(artists []Band) {
 
 	for i := range artists {
 		concertDates := make(map[string][]string)
-		for _, loc := range artists[i].Location {
-			for place, dates := range artists[i].Relation {
-				if loc == place {
-					newLoc := cleanLocation(place)
-					concertDates[newLoc] = dates
-				}
-			}
+		for place, dates := range artists[i].Relation {
+			newLoc := cleanLocation(place)
+			concertDates[newLoc] = dates
 		}
 		artists[i].Concerts = concertDates
 	}
@@ -63,53 +59,50 @@ func AddDates(artists []Band, datesData DatesURL) {
 		// Find the corresponding location data for the artist based on ID
 		for _, date := range datesData.Index {
 			if date.ID == artists[i].ID {
-				cleanDates := cleanDates(date.Dates)
-				artists[i].Dates = cleanDates
+				//cleanDates := cleanDates(date.Dates)
+				//not changing source material
+				artists[i].Dates = date.Dates
 				break
 			}
 		}
 	}
 }
 
-func cleanLocation(s string) string {
-	var location string
+func cleanLocation(loc string) string {
+	location := strings.Split(loc, "-")
 
-	for i, char := range s {
-		if char == '_' {
-			location += " "
-		} else if char == '-' {
-			location += ", "
-		} else if i == 0 || s[i-1] == '_' || s[i-1] == '-' {
-			location += strings.ToUpper(string(char))
+	for i := 0; i < len(location); i++ {
+		item := location[i]
+		if item == "usa" {
+			location[i] = "USA"
 		} else {
-			location += string(char)
-		}
-	}
-	return location
-}
-
-func cleanDates(s []string) []string {
-	var dates []string
-
-	for _, date := range s {
-		modWord := ""
-		for _, char := range date {
-			if char != '*' {
-				modWord += string(char)
+			modLoc := ""
+			for j, char := range item {
+				if char == '_' {
+					modLoc += " "
+				} else if j == 0 || item[j-1] == '_' || item[j-1] == '-' {
+					modLoc += strings.ToUpper(string(char))
+				} else {
+					modLoc += string(char)
+				}
 			}
-		}
-		dates = append(dates, modWord)
-	}
-	return dates
-}
-
-func CleanInput(input string) string {
-	cleanStr := ""
-
-	for _, char := range input {
-		if (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') {
-			cleanStr += string(char)
+			location[i] = modLoc
 		}
 	}
-	return cleanStr
+	return strings.Join(location, ", ")
 }
+
+// func cleanDates(s []string) []string {
+// 	var dates []string
+
+// 	for _, date := range s {
+// 		modWord := ""
+// 		for _, char := range date {
+// 			if char != '*' {
+// 				modWord += string(char)
+// 			}
+// 		}
+// 		dates = append(dates, modWord)
+// 	}
+// 	return dates
+// }
