@@ -20,43 +20,45 @@
         <h1>{{.Name}}</h1>
 
         <!-- Image section -->
-        <img src="{{.Image}}" alt="{{.Name}}" style="width:10%">
-
+        <div class="band-img">
+            <img src="{{.Image}}" alt="{{.Name}}" style="width:10%">
+        </div>
         <!-- Band information -->
+        <div class="card-container1">
+            <details class="card">
+                <summary>Members</summary>
 
-        <details>
-            <summary>Members</summary>
-
-            {{range .Members}}
-            {{.}}<br>
-            {{end}}
-        </details>
-
-        <details>
-            <summary>Created in</summary>
-            {{.CreationDate}}
-        </details>
-
-        <details>
-            <summary>First Album</summary>
-            {{.FirstAlbum}}
-        </details>
-
-        <details>
-            <summary>Concerts</summary>
-            <ul>
-                {{range $city, $dates := .Concerts}}
-                <li>{{$city}}
-                    <ul>
-                        {{range $dates}}
-                        <li>{{.}}</li>
-                        {{end}}
-                    </ul>
-                </li>
+                {{range .Members}}
+                {{.}}<br>
                 {{end}}
-            </ul>
-        </details>
+            </details>
+
+            <details class="card">
+                <summary>Created in</summary>
+                {{.CreationDate}}
+            </details>
+
+            <details class="card">
+                <summary>First Album</summary>
+                {{.FirstAlbum}}
+            </details>
+
+            <details class="card">
+                <summary>Concerts</summary>
+                <ul>
+                    {{range $city, $dates := .Concerts}}
+                    <li>{{$city}}
+                        <ul>
+                            {{range $dates}}
+                            <li>{{.}}</li>
+                            {{end}}
+                        </ul>
+                    </li>
+                    {{end}}
+                </ul>
+            </details>
     </section>
+    </div>
 </body>
 
 </html>

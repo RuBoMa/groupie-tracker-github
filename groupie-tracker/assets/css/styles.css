@@ -84,6 +84,12 @@ h1 {
     border-radius: 15px;
 }
 
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .nav-bar {
     background-color: rgba(116, 29, 96, 0.699);
     border-bottom: 3px solid rgb(161, 255, 224);
@@ -133,6 +139,7 @@ details {
 }
 
 summary {
+
     background-color: rgb(68, 32, 59);
     color: rgb(161, 255, 224);
     padding: 10px;
@@ -140,7 +147,7 @@ summary {
     font-weight: bold;
     cursor: pointer;
     outline: none;
-    width: 100px;
+    border-radius: 8px;
 
 }
 
@@ -174,4 +181,21 @@ ul {
 
 #text {
     margin-left: 5px;
+}
+
+.card-container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.band-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+}
+
+.img {
+    border-radius: 16px;
 }
