@@ -18,7 +18,7 @@ body {
 
 section.background {
     /* background-color: black; */
-    /* background-image: linear-gradient(to bottom, #38143d, #09090f); */
+    background-image: linear-gradient(to bottom, #38143d, #09090f);
     background-size: contain;
     background-position: top;
     /* Centers the image */
