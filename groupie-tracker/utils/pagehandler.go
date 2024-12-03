@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -12,17 +12,19 @@ func PageHandler(artists []Band, data PageData) {
 		case "/":
 
 			if r.Method != http.MethodGet {
+				log.Println("Wrong user method requesting /")
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return
 			}
 			if err := tmpl.ExecuteTemplate(w, "index.html", data); err != nil {
-				fmt.Println(err)
+				log.Println("Error executing index.html: ", err)
 				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
 			}
 
 		case "/About":
 
 			if r.Method != http.MethodGet {
+				log.Println("Wrong user method requesting /About")
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return
 			}
@@ -31,6 +33,7 @@ func PageHandler(artists []Band, data PageData) {
 		default:
 
 			if r.Method != http.MethodGet {
+				log.Println("Wrong user method requesting band pages")
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return
 			}
@@ -38,7 +41,4 @@ func PageHandler(artists []Band, data PageData) {
 
 		}
 	})
-}
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
-
 }
