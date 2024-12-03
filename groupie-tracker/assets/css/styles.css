@@ -17,8 +17,7 @@ body {
 
 
 section.background {
-    /* background-color: black; */
-    /* background-image: linear-gradient(to bottom, #38143d, #09090f); */
+    background-image: linear-gradient(to bottom, #38143d, #09090f);
     background-size: contain;
     background-position: top;
     /* Centers the image */
@@ -70,16 +69,6 @@ h1 {
     padding: 20px;
     min-height: 70%;
 }
-
-/* @keyframes moveCard {
-    0% {
-        transform: translateX(-150px); 
-    }
-    100% {
-        transform: translateX(100vw); 
-    }
-} */
-
 
 .card:hover {
     box-shadow: 0 0px 16px 0 rgb(161, 255, 224);
@@ -140,6 +129,7 @@ details {
     margin-bottom: 10px;
     border: 2px solid rgb(68, 32, 59);
     border-radius: 8px;
+    width: 100px;
 }
 
 summary {
@@ -150,6 +140,7 @@ summary {
     font-weight: bold;
     cursor: pointer;
     outline: none;
+    width: 100px;
 
 }
 
@@ -164,49 +155,6 @@ summary {
     /* Vertical spacing between items */
 }
 
-.search-form {
-    display: flex;
-    flex-direction: column;
-    /* Stacks the textarea and button vertically */
-    align-items: center;
-    /* Centers the form elements horizontally */
-    margin-top: 20px;
-    font-family: "Yuji Mai", serif;
-}
-
-textarea {
-    margin-bottom: 20px;
-    /* Adds space between textarea and button */
-    text-align: center;
-    font-weight: 400;
-    font-family: "Yuji Mai", serif;
-    height: 10vh;
-    width: 80vh;
-    font-size: 5rem;
-    padding: 10vh;
-    background-color: rgba(170, 255, 227, 0.89);
-    color: #18091a;
-    box-shadow: 0 0 20px rgb(170, 255, 227);
-    border-width: 0;
-    vertical-align: middle;
-    resize: none;
-    border-radius: 30px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: rgb(161, 255, 224);
-    color: #18091a;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: rgb(105, 201, 169);
-}
 
 details[open] summary {
     background-color: rgb(124, 66, 110);
