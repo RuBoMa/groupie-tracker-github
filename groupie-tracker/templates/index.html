@@ -24,17 +24,14 @@
                 <ul class="grid">
                     {{range .}}
                     <li class="card-container">
-                        <form action="/{{.Name}}" method="POST" style="display: inline;">
-                            <input type="hidden" name="bandName" value="{{.Name}}">
-                            <button class="card-btn" type="submit">
                                 <div class="card">
+                                    <a href="/{{.Name}}">
                                     <img src="{{.Image}}" alt="{{.Name}}" style="width:100%">
                                     <div class="container">
                                         <h2><b>{{.Name}}</b></h2>
                                     </div>
+                                </a>
                                 </div>
-                            </button>
-                        </form>
                     </li>
                     {{end}}
                 </ul>
