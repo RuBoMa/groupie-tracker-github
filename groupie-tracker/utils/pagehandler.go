@@ -3,7 +3,10 @@ package utils
 import (
 	"log"
 	"net/http"
+	"text/template"
 )
+
+var tmpl = template.Must(template.ParseGlob("templates/*.html"))
 
 func PageHandler(artists []Band) {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

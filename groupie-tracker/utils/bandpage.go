@@ -18,6 +18,7 @@ func BandPage(artists []Band, w http.ResponseWriter, r *http.Request) {
 	for _, artist := range artists {
 		//	Case insensitive word matching
 		if strings.EqualFold(artist.Name, name) {
+			
 			err := tmpl.ExecuteTemplate(w, "artist.html", artist)
 			if err != nil {
 				log.Println("Error executing artist.html: ", err)
@@ -30,4 +31,5 @@ func BandPage(artists []Band, w http.ResponseWriter, r *http.Request) {
 		log.Println("Error: artist page not found.")
 		ErrorPage(w, "Page not found", http.StatusNotFound)
 	}
+	
 }

@@ -40,7 +40,7 @@ func main() {
 	utils.AddConcerts(artists)
 
 	// Serving static files like CSS
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
+	http.Handle("/assets/", http.FileServer(http.Dir(".")))
 	log.Println("rendering PageHandler")
 	utils.PageHandler(artists)
 	fmt.Println("Server started on http://localhost:8090")
@@ -48,6 +48,7 @@ func main() {
 
 }
 
+// Interface allows us to pass in any variable no matter the type
 func fetchData(url string, target interface{}) error {
 	response, err := http.Get(url)
 	if err != nil {
@@ -59,8 +60,6 @@ func fetchData(url string, target interface{}) error {
 	if err != nil {
 		return err
 	}
-	//fmt.Println(string(data)) // Debug the API response
+
 	return json.Unmarshal(data, target)
 }
-
-// request-respond page still missing. POST action is needed in some form. Maybe artist page?

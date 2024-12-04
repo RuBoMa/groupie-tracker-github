@@ -1,7 +1,5 @@
 package utils
 
-import "text/template"
-
 type PageData struct {
 	ErrorMessage string
 	ErrorStatus  string
@@ -42,5 +40,3 @@ type RelationsURL struct {
 		DatesLocations map[string][]string `json:"datesLocations"`
 	} `json:"index"`
 }
-
-var tmpl = template.Must(template.ParseGlob("templates/*.html"))

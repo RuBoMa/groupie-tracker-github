@@ -7,7 +7,10 @@ body {
     height: 100%;
     font-family: 'Courier New', Courier, monospace;
     min-height: 100%;
-    
+    background-image: linear-gradient(to bottom, #38143d, #09090f);
+    background-repeat: no-repeat;
+
+    background-color: #38143d;
 }
 
 .yuji-mai-regular {
@@ -16,20 +19,20 @@ body {
     font-style: normal;
 }
 
+/* 
+section.background { */
 
-section.background {
-    background-image: linear-gradient(to bottom, #38143d, #09090f);
-    background-size: contain;
-    background-position: top;
-    /* Centers the image */
-    background-repeat: no-repeat;
-    /* Prevents the image from repeating */
-    min-height: 100%;
-    position: relative;
-}
+/* background-size: contain;
+    background-position: top; */
+/* Centers the image */
+/* background-repeat: no-repeat; */
+/* Prevents the image from repeating */
+/* min-height: 100%;
+    position: relative; */
+/* } */
 
 section.background-image {
-    background-image: url("/assets/concertv1.1.jpg");
+    /* background-image: url("/assets/concertv1.1.jpg"); */
     background-size: contain;
     background-position: top;
     /* Centers the image */
@@ -69,7 +72,7 @@ h1 {
     border-radius: 15px;
     padding: 20px;
     min-height: 70%;
-
+    margin-bottom: 40px;
 }
 
 .card:hover {
@@ -137,7 +140,7 @@ details {
     margin-bottom: 10px;
     border: 2px solid rgb(68, 32, 59);
     border-radius: 8px;
-    width: 100px;
+    width: 200px;
 }
 
 summary {
@@ -189,9 +192,11 @@ ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-content: stretch;
     align-items: flex-start;
+    flex-grow: 1;
+    flex-basis: 200;
 }
 
 

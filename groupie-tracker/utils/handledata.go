@@ -35,7 +35,6 @@ func AddRelations(artists []Band, relations RelationsURL) {
 }
 
 // Reading locations from LocationURL and adding to Band struct by matching IDs
-// Locations in chronologial order
 func AddLocation(artists []Band, locationData LocationURL) {
 
 	for i := range artists {
