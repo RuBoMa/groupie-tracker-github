@@ -26,23 +26,28 @@
             <details class="card">
                 <summary>Members</summary>
 
-                {{range .Members}}
+                <b>{{range .Members}}
                 {{.}}<br>
                 {{end}}
-            </details>
+            </b></details>
 
             <details class="card">
                 <summary>Created in</summary>
+                <b>
                 {{.CreationDate}}
+            </b>
             </details>
 
             <details class="card">
                 <summary>First Album</summary>
+                <b>
                 {{.FirstAlbum}}
+            </b>
             </details>
 
             <details class="card">
                 <summary>Relations</summary>
+                <b>
                 <ul>
                     {{range $city, $dates := .Concerts}}
                     <li>{{$city}}
@@ -54,25 +59,24 @@
                     </li>
                     {{end}}
                 </ul>
+            </b>
             </details>
 
             <details class="card">
                 <summary>Locations</summary>
-
+                <b>
                 {{range .Location}}
                 {{.}}<br>
                 {{end}}
-
-            </details>
+            </b></details>
 
             <details class="card">
                 <summary>Dates</summary>
-
+                <b>
                 {{range .Dates}}
                 {{.}}<br>
                 {{end}}
-
-            </details>
+            </b></details>
     </section>
 
     </div>
