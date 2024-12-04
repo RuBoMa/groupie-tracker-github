@@ -37,7 +37,7 @@ func PageHandler(artists []Band, data PageData) {
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return
 			}
-			BandPage(artists, data, w, r)
+			BandPage(artists, w, r)
 
 		}
 	})

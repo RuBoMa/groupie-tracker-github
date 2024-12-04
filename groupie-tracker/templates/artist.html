@@ -42,7 +42,7 @@
             </details>
 
             <details class="card">
-                <summary>Locations</summary>
+                <summary>Relations</summary>
                 <ul>
                     {{range $city, $dates := .Concerts}}
                     <li>{{$city}}
@@ -55,7 +55,26 @@
                     {{end}}
                 </ul>
             </details>
+
+            <details class="card">
+                <summary>Locations</summary>
+
+                {{range .Location}}
+                {{.}}<br>
+                {{end}}
+
+            </details>
+
+            <details class="card">
+                <summary>Dates</summary>
+
+                {{range .Dates}}
+                {{.}}<br>
+                {{end}}
+
+            </details>
     </section>
+
     </div>
 </body>
 

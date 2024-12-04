@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func BandPage(artists []Band, data PageData, w http.ResponseWriter, r *http.Request) {
+func BandPage(artists []Band, w http.ResponseWriter, r *http.Request) {
 	artistExists := false
 	name := r.FormValue("bandName")
 
