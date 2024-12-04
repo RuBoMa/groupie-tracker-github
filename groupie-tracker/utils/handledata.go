@@ -41,10 +41,14 @@ func AddLocation(artists []Band, locationData LocationURL) {
 	for i := range artists {
 		// Find the corresponding location data for the artist based on ID
 		for _, loc := range locationData.Index {
+			var cleanLoc []string
 			if loc.ID == artists[i].ID {
-				// cleanLocation := cleanLocation(loc.Locations)
-				// artists[i].Location = cleanLocation
-				artists[i].Location = loc.Locations
+				for _, place := range loc.Locations {
+					addLoc := cleanLocation(place)
+					cleanLoc = append(cleanLoc, addLoc)
+				}
+				artists[i].Location = cleanLoc
+				//artists[i].Location = loc.Locations
 				break
 			}
 		}
@@ -59,9 +63,9 @@ func AddDates(artists []Band, datesData DatesURL) {
 		// Find the corresponding location data for the artist based on ID
 		for _, date := range datesData.Index {
 			if date.ID == artists[i].ID {
-				//cleanDates := cleanDates(date.Dates)
+				cleanDates := cleanDates(date.Dates)
 				//not changing source material
-				artists[i].Dates = date.Dates
+				artists[i].Dates = cleanDates
 				break
 			}
 		}
@@ -92,17 +96,17 @@ func cleanLocation(loc string) string {
 	return strings.Join(location, ", ")
 }
 
-// func cleanDates(s []string) []string {
-// 	var dates []string
+func cleanDates(s []string) []string {
+	var dates []string
 
-// 	for _, date := range s {
-// 		modWord := ""
-// 		for _, char := range date {
-// 			if char != '*' {
-// 				modWord += string(char)
-// 			}
-// 		}
-// 		dates = append(dates, modWord)
-// 	}
-// 	return dates
-// }
+	for _, date := range s {
+		modWord := ""
+		for _, char := range date {
+			if char != '*' {
+				modWord += string(char)
+			}
+		}
+		dates = append(dates, modWord)
+	}
+	return dates
+}

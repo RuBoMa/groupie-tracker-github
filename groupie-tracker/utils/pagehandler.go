@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func PageHandler(artists []Band, data PageData) {
+func PageHandler(artists []Band) {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 
@@ -16,7 +16,7 @@ func PageHandler(artists []Band, data PageData) {
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return
 			}
-			if err := tmpl.ExecuteTemplate(w, "index.html", data); err != nil {
+			if err := tmpl.ExecuteTemplate(w, "index.html", artists); err != nil {
 				log.Println("Error executing index.html: ", err)
 				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
 			}

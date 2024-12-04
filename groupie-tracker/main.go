@@ -39,14 +39,10 @@ func main() {
 	utils.AddRelations(artists, relations)
 	utils.AddConcerts(artists)
 
-	data := utils.PageData{
-		Matches: artists,
-	}
-
 	// Serving static files like CSS
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 	log.Println("rendering PageHandler")
-	utils.PageHandler(artists, data)
+	utils.PageHandler(artists)
 	fmt.Println("Server started on http://localhost:8090")
 	log.Fatal(http.ListenAndServe(":8090", nil))
 

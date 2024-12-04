@@ -3,8 +3,6 @@ package utils
 import "text/template"
 
 type PageData struct {
-	Input        string
-	Matches      []Band
 	ErrorMessage string
 	ErrorStatus  string
 }

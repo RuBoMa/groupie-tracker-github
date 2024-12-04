@@ -27,7 +27,7 @@
 
             <section>
                 <ul class="grid">
-                    {{range .Matches}}
+                    {{range .}}
                     <li class="card-container">
                         <form action="/{{.Name}}" method="POST" style="display: inline;">
                             <input type="hidden" name="bandName" value="{{.Name}}">
