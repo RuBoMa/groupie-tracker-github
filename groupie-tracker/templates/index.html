@@ -8,18 +8,13 @@
     <title>Groupie Tracker</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
-<script>
-    window.onload = function () {
-        window.scrollTo(0, 0);
-    };
-</script>
+
 
 <body>
     <section class="background">
-        <section class="background-image">
             <ul class="nav-bar">
                 <li><a href="/">Home</a></li>
-                <li><a href="About">About Us</a></li>
+                <li><a href="/About">About Us</a></li>
             </ul>
             <h1>Groupie Tracker</h1>
 
@@ -31,7 +26,7 @@
                     <li class="card-container">
                         <form action="/{{.Name}}" method="POST" style="display: inline;">
                             <input type="hidden" name="bandName" value="{{.Name}}">
-                            <button type="submit" style="all: unset; cursor: pointer; text-decoration: underline; color: blue;">
+                            <button class="card-btn" type="submit">
                                 <div class="card">
                                     <img src="{{.Image}}" alt="{{.Name}}" style="width:100%">
                                     <div class="container">
@@ -44,7 +39,9 @@
                     {{end}}
                 </ul>
             </section>
-            
+        </section>
+
+
 </body>
 
 </html>

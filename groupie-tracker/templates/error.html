@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,15 @@
     <title>{{.ErrorMessage}}</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
+
 <body>
     <section class="background">
-    <ul class="nav-bar">
-        <li><a href="/">Home</a></li>
-        <li><a href="About">About Us</a></li>
-    </ul>
-    <h1>{{.ErrorStatus}}</h1>
-    
-    <h2>{{.ErrorMessage}}</h2>
-</section>
+        <ul class="nav-bar">
+            <li><a href="/">Home</a></li>
+            <li><a href="/About">About Us</a></li>
+        </ul>
+        <h1>{{.ErrorStatus}}</h1>
+
+        <h1>{{.ErrorMessage}}</h1>
+    </section>
 </body>
