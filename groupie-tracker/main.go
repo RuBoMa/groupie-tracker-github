@@ -24,7 +24,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error fetching locations: %v", err)
 	}
-	err = fetchData("https://groupietrackers.herokuapp.com/api/dates", &datesData)
+	err = fetchData("https://groupietrackers.herokuapp.com/api/dates", &dates)
 	if err != nil {
 		log.Fatalf("Error fetching dates s: %v", err)
 	}
