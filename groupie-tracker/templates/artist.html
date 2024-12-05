@@ -19,7 +19,7 @@
 
         <!-- Image section -->
         <div class="band-img">
-            <img src="{{.Image}}" alt="{{.Name}}" style="width:10%">
+            <img id="artist-img" src="{{.Image}}" alt="{{.Name}}">
         </div>
         <!-- Band information -->
         <div class="card-container1">
@@ -27,56 +27,59 @@
                 <summary>Members</summary>
 
                 <b>{{range .Members}}
-                {{.}}<br>
-                {{end}}
-            </b></details>
+                    {{.}}<br>
+                    {{end}}
+                </b>
+            </details>
 
             <details class="card">
                 <summary>Created in</summary>
                 <b>
-                {{.CreationDate}}
-            </b>
+                    {{.CreationDate}}
+                </b>
             </details>
 
             <details class="card">
                 <summary>First Album</summary>
                 <b>
-                {{.FirstAlbum}}
-            </b>
+                    {{.FirstAlbum}}
+                </b>
             </details>
 
             <details class="card">
                 <summary>Relations</summary>
                 <b>
-                <ul>
-                    {{range $city, $dates := .Concerts}}
-                    <li>{{$city}}
-                        <ul>
-                            {{range $dates}}
-                            <li>{{.}}</li>
-                            {{end}}
-                        </ul>
-                    </li>
-                    {{end}}
-                </ul>
-            </b>
+                    <ul>
+                        {{range $city, $dates := .Concerts}}
+                        <li>{{$city}}
+                            <ul>
+                                {{range $dates}}
+                                <li>{{.}}</li>
+                                {{end}}
+                            </ul>
+                        </li>
+                        {{end}}
+                    </ul>
+                </b>
             </details>
 
             <details class="card">
                 <summary>Locations</summary>
                 <b>
-                {{range .Location}}
-                {{.}}<br>
-                {{end}}
-            </b></details>
+                    {{range .Location}}
+                    {{.}}<br>
+                    {{end}}
+                </b>
+            </details>
 
             <details class="card">
                 <summary>Dates</summary>
                 <b>
-                {{range .Dates}}
-                {{.}}<br>
-                {{end}}
-            </b></details>
+                    {{range .Dates}}
+                    {{.}}<br>
+                    {{end}}
+                </b>
+            </details>
     </section>
 
     </div>
