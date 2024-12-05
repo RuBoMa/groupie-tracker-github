@@ -18,13 +18,17 @@ section.background {
 }
 
 .card-btn {
-    all: unset;
     cursor: pointer;
-    text-decoration: underline;
-    color: blue;
 }
 
+h2 {
+    color: rgb(90, 39, 87);
+}
 
+a {
+    text-decoration: none;
+
+}
 
 h1 {
     padding: 50px;
