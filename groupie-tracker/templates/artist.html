@@ -26,9 +26,10 @@
             <details class="card">
                 <summary>Members</summary>
 
-                <b>{{range .Members}}
-                    {{.}}<br>
+                <b><ul>{{range .Members}}
+                    {{.}}<br><br>
                     {{end}}
+                </ul>
                 </b>
             </details>
 
@@ -58,6 +59,7 @@
                                 {{end}}
                             </ul>
                         </li>
+                        <br>
                         {{end}}
                     </ul>
                 </b>
@@ -65,19 +67,21 @@
 
             <details class="card">
                 <summary>Locations</summary>
-                <b>
+                <b> <ul>
                     {{range .Location}}
-                    {{.}}<br>
+                    {{.}}<br><br>
                     {{end}}
+                </ul>
                 </b>
             </details>
 
             <details class="card">
                 <summary>Dates</summary>
-                <b>
+                <b> <ul>
                     {{range .Dates}}
-                    {{.}}<br>
+                    {{.}}<br><br>
                     {{end}}
+                </ul>
                 </b>
             </details>
     </section>

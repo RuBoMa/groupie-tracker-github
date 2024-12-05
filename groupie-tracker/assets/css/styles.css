@@ -61,10 +61,6 @@ h1 {
     margin-bottom: 40px;
 }
 
-.card b {
-    line-height: 2;
-}
-
 .card:hover {
     box-shadow: 0 0px 16px 0 rgb(161, 255, 224);
 }
