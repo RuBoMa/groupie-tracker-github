@@ -11,5 +11,8 @@ func ErrorPage(w http.ResponseWriter, errorMessage string, errorStatus int) {
 		ErrorMessage: errorMessage,
 		ErrorStatus:  "Error " + strconv.Itoa(errorStatus),
 	}
-	tmpl.ExecuteTemplate(w, "error.html", data)
+	err := tmpl.ExecuteTemplate(w, "error.html", data)
+	if err != nil {
+		http.Error(w, errorMessage, errorStatus)
+	}
 }
