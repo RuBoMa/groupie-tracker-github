@@ -113,3 +113,29 @@ func CleanInput(input string) string {
 	}
 	return cleanStr
 }
+
+func AddLocationsToData(artists []Band, data *PageData) {
+	data.AllLocations = append(data.AllLocations, "north_carolina-usa")
+
+	for _, artist := range artists {
+		for _, loc := range artist.Location {
+			for index, prevLoc := range data.AllLocations {
+				if loc == prevLoc {
+					break
+				}
+				if index == len(data.AllLocations)-1 {
+					data.AllLocations = append(data.AllLocations, loc)
+				}
+			}
+		}
+	}
+}
+
+func AddMaxMembersToData(artists []Band, data *PageData) {
+	data.MaxMembers = append(data.MaxMembers, 1)
+	for _, artist := range artists {
+		for i := data.MaxMembers[len(data.MaxMembers)-1] + 1; i <= len(artist.Members); i++ {
+			data.MaxMembers = append(data.MaxMembers, i)
+		}
+	}
+}

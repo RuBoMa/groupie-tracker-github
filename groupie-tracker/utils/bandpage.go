@@ -16,11 +16,12 @@ func BandPage(artists []Band, data PageData, w http.ResponseWriter, r *http.Requ
 			err := tmplArtist.Execute(w, artist)
 			if err != nil {
 				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
+				return
 			}
-			artistExists = true
 		}
 	}
 	if !artistExists {
 		ErrorPage(w, "Page not found", http.StatusNotFound)
+		return
 	}
 }

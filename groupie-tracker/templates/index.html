@@ -13,6 +13,23 @@
 <script>
     window.onload = function () {
         window.scrollTo(0, 0);
+
+        // Helper function to toggle the disabled state
+        function toggleFilter(enableCheckboxId, ...targetIds) {
+            const checkbox = document.getElementById(enableCheckboxId);
+            checkbox.addEventListener('change', () => {
+                targetIds.forEach(targetId => {
+                    const target = document.getElementById(targetId);
+                    target.disabled = !checkbox.checked;
+                });
+            });
+        }
+
+        // Add event listeners for each filter
+        toggleFilter('enable-member-amount', 'member-amount');
+        toggleFilter('enable-creation-year', 'creation-year-min', 'creation-year-max');
+        toggleFilter('enable-album-year', 'album-year-min', 'album-year-max');
+        toggleFilter('enable-location', 'location');
     };
 </script>
 
@@ -29,20 +46,47 @@
             <!-- placeholdes for navbar -->
 
         </section>
+        <form method="post" action="/Filter">
+            <label>
+                <input type="checkbox" id="enable-member-amount" name="enable-member-amount" value="true">
+            </label>
+            <select id="member-amount" name="member-amount" disabled>
+            {{range .MaxMembers}}
+            <option value="{{.}}">{{.}}</option>
+            {{end}}
+            </select>
+            <label>
+                <input type="checkbox" id="enable-creation-year" name="enable-creation-year" value="true">
+            </label>
+            <input type="range" min="1958" max="2024" id="creation-year-min" name="creation-year-min" value={{.Filter.CreationYearMin}} disabled>
+            <input type="range" min="1958" max="2024" id="creation-year-max" name="creation-year-max" value={{.Filter.CreationYearMax}} disabled>
+            <label>
+                <input type="checkbox" id="enable-album-year" name="enable-album-year" value="true">
+            </label>
+            <input type="range" min="1963" max="2024" id="album-year-min" name="album-year-min" value={{.Filter.AlbumYearMin}} disabled>
+            <input type="range" min="1963" max="2024" id="album-year-max" name="album-year-max" value={{.Filter.AlbumYearMax}} disabled>
+            <label>
+                <input type="checkbox" id="enable-location" name="enable-location" value="true">
+            </label>
+            <select id="location" name="location" disabled>
+                {{range .AllLocations}}
+                    <option value="{{.}}">{{.}}</option>
+                {{end}}
+            </select>
+            <input type="submit" value="Submit">
+        </form>
         <ul class="grid">
             {{range .Matches}}
             <li class="card-container">
                 <div class="card">
                     <a href="/{{.Name}}">
                         <img src="{{.Image}}" alt="{{.Name}}" style="width:100%">
-
                         <div class="container">
                             <h2><b>{{.Name}}</b></h2>
                         </div>
                     </a>
                 </div>
             </li>
-
             {{end}}
         </ul>
     </section>

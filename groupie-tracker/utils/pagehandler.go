@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 	"text/template"
 )
@@ -17,13 +17,22 @@ func PageHandler(artists []Band, data PageData) {
 			}
 			tmplHome, err := template.ParseFiles("templates/index.html")
 			if err != nil {
+				log.Println(err)
 				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
 				return
 			}
 			if err := tmplHome.Execute(w, data); err != nil {
-				fmt.Println(err)
+				log.Println(err)
 				ErrorPage(w, "Internal Server Error", http.StatusInternalServerError)
+				return
 			}
+
+		case "/Filter":
+			if r.Method != http.MethodPost {
+				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
+				return
+			}
+			FilterPage(artists, data, w, r)
 
 		case "/About":
 			if r.Method != http.MethodGet {
@@ -33,7 +42,6 @@ func PageHandler(artists []Band, data PageData) {
 			AboutPage(w)
 
 		default:
-			//	Change to method post when changing request/response stuff
 			if r.Method != http.MethodGet {
 				ErrorPage(w, "Wrong user method", http.StatusMethodNotAllowed)
 				return
@@ -42,7 +50,4 @@ func PageHandler(artists []Band, data PageData) {
 
 		}
 	})
-}
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
-
 }

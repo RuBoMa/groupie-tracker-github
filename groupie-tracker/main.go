@@ -49,6 +49,9 @@ func main() {
 		Matches: artists,
 	}
 
+	utils.AddLocationsToData(artists, &data)
+	utils.AddMaxMembersToData(artists, &data)
+
 	// Serving static files like CSS
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 	log.Println("rendering BandPage")
@@ -72,5 +75,3 @@ func fetchData(url string, target interface{}) error {
 	//fmt.Println(string(data)) // Debug the API response
 	return json.Unmarshal(data, target)
 }
-
-// possible changes: Reading locations into a

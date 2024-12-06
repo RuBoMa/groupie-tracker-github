@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yuji+Mai&display=swap" rel="stylesheet">
+</head>
+<script>
+    window.onload = function () {
+        window.scrollTo(0, 0);
+
+        // Helper function to toggle the disabled state
+        function toggleFilter(enableCheckboxId, ...targetIds) {
+            const checkbox = document.getElementById(enableCheckboxId);
+            checkbox.addEventListener('change', () => {
+                targetIds.forEach(targetId => {
+                    const target = document.getElementById(targetId);
+                    target.disabled = !checkbox.checked;
+                });
+            });
+        }
+
+        // Add event listeners for each filter
+        toggleFilter('enable-member-amount', 'member-amount');
+        toggleFilter('enable-creation-year', 'creation-year-min', 'creation-year-max');
+        toggleFilter('enable-album-year', 'album-year-min', 'album-year-max');
+        toggleFilter('enable-location', 'location');
+    };
+</script>
+
+<body>
+    <section class="background">
+        <section class="background-image">
+            <ul class="nav-bar">
+                <li><a href="/">Home</a></li>
+                <li><a href="About">About Us</a></li>
+                <li><a href="Locations">Locations</a></li>
+            </ul>
+            <h1>Groupie Tracker</h1>
+
+            <!-- placeholdes for navbar -->
+
+        </section>
+        <form method="post" action="/Filter">
+            <label>
+                <input type="checkbox" id="enable-member-amount" name="enable-member-amount" value="true">
+            </label>
+            <select id="member-amount" name="member-amount" disabled>
+            {{range .MaxMembers}}
+            <option value="{{.}}">{{.}}</option>
+            {{end}}
+            </select>
+            <label>
+                <input type="checkbox" id="enable-creation-year" name="enable-creation-year" value="true">
+            </label>
+            <input type="range" min="1958" max="2024" id="creation-year-min" name="creation-year-min" value={{.Filter.CreationYearMin}} disabled>
+            <input type="range" min="1958" max="2024" id="creation-year-max" name="creation-year-max" value={{.Filter.CreationYearMax}} disabled>
+            <label>
+                <input type="checkbox" id="enable-album-year" name="enable-album-year" value="true">
+            </label>
+            <input type="range" min="1963" max="2024" id="album-year-min" name="album-year-min" value={{.Filter.AlbumYearMin}} disabled>
+            <input type="range" min="1963" max="2024" id="album-year-max" name="album-year-max" value={{.Filter.AlbumYearMax}} disabled>
+            <label>
+                <input type="checkbox" id="enable-location" name="enable-location" value="true">
+            </label>
+            <select id="location" name="location" disabled>
+                {{range .AllLocations}}
+                    <option value="{{.}}">{{.}}</option>
+                {{end}}
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+        <ul class="grid">
+            {{range .Matches}}
+            <li class="card-container">
+                <div class="card">
+                    <a href="/{{.Name}}">
+                        <img src="{{.Image}}" alt="{{.Name}}" style="width:100%">
+                        <div class="container">
+                            <h2><b>{{.Name}}</b></h2>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            {{end}}
+        </ul>
+    </section>
+</body>
+
+</html>

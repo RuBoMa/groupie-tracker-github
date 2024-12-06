@@ -1,7 +1,16 @@
 package utils
 
 type PageData struct {
-	Input        string
+	Filter struct {
+		MemberAmount    int
+		CreationYearMin int
+		CreationYearMax int
+		AlbumYearMin    int
+		AlbumYearMax    int
+		Location        string
+	}
+	AllLocations []string
+	MaxMembers   []int
 	Matches      []Band
 	ErrorMessage string
 	ErrorStatus  string
