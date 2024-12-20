@@ -25,7 +25,7 @@ section.background-about {
 }
 
 h2 {
-    color: rgb(90, 39, 87);
+    color: rgb(255 153 153);
 }
 
 a {
@@ -36,10 +36,10 @@ a {
 h1 {
     padding: 50px;
     text-align: center;
-    color: rgb(161, 255, 224);
+    color: rgb(255 153 153);
     font-size: 300%;
     font-family: 'Courier New', Courier, monospace;
-    text-shadow: 0 0 6px rgb(161, 255, 224);
+    text-shadow: 0 0 6px rgb(255 153 153);
 }
 
 .grid {
@@ -53,11 +53,20 @@ h1 {
     margin: 0;
 }
 
+.band-card:hover {
+    box-shadow: 0 0px 6px 0 rgba(161, 255, 224, 0.336);
+    transition: 0.3s;
+    background-color: rgb(94, 68, 122);
+    border-radius: 15px;
+    padding: 20px;
+    min-width: 210px;
+    min-height: 300px;
+}
 
 .card {
     box-shadow: 0 0px 6px 0 rgba(161, 255, 224, 0.336);
     transition: 0.3s;
-    background-color: rgb(161, 255, 224);
+    background-color: rgb(255 153 153);
     border-radius: 15px;
     padding: 20px;
     min-width: 210px;
@@ -65,16 +74,16 @@ h1 {
 }
 
 .card:hover {
-    box-shadow: 0 0px 16px 0 rgb(161, 255, 224);
+    box-shadow: 0 0px 16px 0 rgb(255 153 153);
 }
 
-.container {
-    padding: 16px;
+/* .container {
+    padding: 8px;
     margin-left: 5px;
 
-}
+} */
 
-.card img {
+.card img, .band-card img {
     border-radius: 15px;
 }
 
@@ -139,7 +148,7 @@ details {
 summary {
 
     background-color: rgb(68, 32, 59);
-    color: rgb(161, 255, 224);
+    color: rgb(255 153 153);
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
