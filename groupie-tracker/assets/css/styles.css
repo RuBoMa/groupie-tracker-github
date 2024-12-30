@@ -9,16 +9,6 @@ body {
     background-color: #09090f;
 }
 
-body.main-page {
-    background-image: linear-gradient(to bottom, #38143d, #09090f);
-
-}
-
-body.gradient {
-    background-image: linear-gradient(to bottom, #38143d, #09090f);
-
-}
-
 section.background-about {
     height: auto;
     width: 100vw;
@@ -44,7 +34,6 @@ h1 {
     color: rgb(255 153 153);
     font-size: 300%;
     font-family: 'Courier New', Courier, monospace;
-    /* text-shadow: 0 0 6px rgb(255 153 153); */
 }
 
 .grid {
@@ -106,7 +95,7 @@ h1 {
 
 .nav-bar {
     background-color: rgba(116, 29, 96, 0.699);
-    border-bottom: 3px solid rgb(161, 255, 224);
+    border-bottom: 3px solid rgb(255 153 153);
     padding-top: 25px;
     width: 100%;
     margin: auto;
@@ -129,7 +118,7 @@ h1 {
 }
 
 .nav-bar li a {
-    color: rgb(161, 255, 224);
+    color: rgb(255 153 153);
     text-decoration: none;
     padding-left: 50px;
     padding-right: 50px;
@@ -140,7 +129,7 @@ h1 {
 }
 
 .nav-bar li a:hover {
-    text-shadow: 0 0 4px rgb(105, 201, 169);
+    text-shadow: 0 0 4px rgb(255 153 153);
 }
 
 details {
@@ -204,17 +193,10 @@ p {
 
 .footer {
     background-color: #1a1a1d;
-    /* Dark background */
     color: #ffffff;
-    /* White text */
     text-align: center;
-    /* Centered text */
     padding: 10px 0;
-    /* Top and bottom spacing */
     margin-top: 20px;
-    /* Optional: space above the footer */
     font-size: 14px;
-    /* Text size */
     width: 100%;
-    /* Full width */
 }
