@@ -44,7 +44,7 @@ func main() {
 	log.Println("rendering PageHandler")
 	utils.PageHandler(artists)
 	fmt.Println("Server started on http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":55001", nil))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 
 }
 

@@ -4,36 +4,6 @@ import (
 	"strings"
 )
 
-// Adding data to Concerts by looping the relations
-// Concerts include same data as relations but the places are capitalized
-func AddConcerts(artists []Band) {
-
-	for i := range artists {
-		concertDates := make(map[string][]string)
-		for place, dates := range artists[i].Relation {
-			newLoc := cleanLocation(place)
-			concertDates[newLoc] = dates
-		}
-		artists[i].Concerts = concertDates
-	}
-}
-
-// Reading relations from RelationsURL and adding to Band struct by matching IDs
-// Concerts in alphabetical order after the town name
-func AddRelations(artists []Band, relations RelationsURL) {
-
-	for i := range artists {
-		// Find the corresponding location data for the artist based on ID
-		for _, rel := range relations.Index {
-			if rel.ID == artists[i].ID {
-				artists[i].Relation = rel.DatesLocations
-				break
-			}
-		}
-
-	}
-}
-
 // Reading locations from LocationURL and adding to Band struct by matching IDs
 func AddLocation(artists []Band, locationData LocationURL) {
 
@@ -71,13 +41,44 @@ func AddDates(artists []Band, datesData DatesURL) {
 	}
 }
 
+// Reading relations from RelationsURL and adding to Band struct by matching IDs
+// Concerts in alphabetical order after the town name
+func AddRelations(artists []Band, relations RelationsURL) {
+
+	for i := range artists {
+		// Find the corresponding location data for the artist based on ID
+		for _, rel := range relations.Index {
+			if rel.ID == artists[i].ID {
+				artists[i].Relation = rel.DatesLocations
+				break
+			}
+		}
+
+	}
+}
+
+// Adding data to Concerts by looping the relations
+// Concerts include same data as relations but the places are capitalized
+func AddConcerts(artists []Band) {
+
+	for i := range artists {
+		concertDates := make(map[string][]string)
+		for place, dates := range artists[i].Relation {
+			newLoc := cleanLocation(place)
+			concertDates[newLoc] = dates
+		}
+		artists[i].Concerts = concertDates
+	}
+}
+
+// Capitalizes first letter of the city and country (separated by "-"), adding space instead of "_"
 func cleanLocation(loc string) string {
 	location := strings.Split(loc, "-")
 
 	for i := 0; i < len(location); i++ {
 		item := location[i]
-		if item == "usa" {
-			location[i] = "USA"
+		if item == "usa" || item == "uk" {
+			location[i] = strings.ToUpper(item)
 		} else {
 			modLoc := ""
 			for j, char := range item {
@@ -95,6 +96,7 @@ func cleanLocation(loc string) string {
 	return strings.Join(location, ", ")
 }
 
+// Removes the "*" from the beginning for the dates
 func cleanDates(s []string) []string {
 	var dates []string
 
